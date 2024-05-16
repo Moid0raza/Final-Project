@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store - Iron Warrior Gym</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+        <h1>Welcome to Iron Warrior Gym</h1>
+        <nav>
+            <ul>
+                <li><a href="about_us.html">About Us</a></li>
+                <li><a href="membership.html">Membership</a></li>
+                <li><a href="store.html">Store</a></li>
+            </ul>
+        </nav>
+    </div>
+    </header>
+    <section class="store">
+        <main>
+            <section class="parallax parallax2" data-speed="0.5">
+            <div class="content">
+            <h2>Store</h2>
+            </div>
+            </section>
+            <div class="product-grid">
+                <!-- Product 1 -->
+                <div class="product">
+                    <img src="tshirt.jpg" alt="T-shirt">
+                    <h4>T-shirt</h4>
+                    <p>Show off your dedication to fitness with our comfortable and stylish t-shirts.</p>
+                    <p>Price: $20</p>
+                    <button class="add-to-cart" data-name="T-shirt" data-price="20">Add to Cart</button>
+                </div>
+                <!-- Product 2 -->
+                <div class="product">
+                    <img src="water_bottle.jpg" alt="Water Bottle">
+                    <h4>Water Bottle</h4>
+                    <p>Stay hydrated during your workouts with our durable water bottles featuring the Iron Warriors Gym logo.</p>
+                    <p>Price: $15</p>
+                    <button class="add-to-cart" data-name="Water Bottle" data-price="15">Add to Cart</button>
+                </div>
+                <!-- Product 3 -->
+                <div class="product">
+                    <img src="gym_bag.webp" alt="Gym Bag">
+                    <h4>Gym Bag</h4>
+                    <p>Carry your gym essentials in style with our spacious gym bags.</p>
+                    <p>Price: $30</p>
+                    <button class="add-to-cart" data-name="Gym Bag" data-price="30">Add to Cart</button>
+                </div>
+                <!-- Product 4 -->
+                <div class="product">
+                    <img src="supplements.jpg" alt="Supplements">
+                    <h4>Supplements</h4>
+                    <p>Boost your performance with our top-quality supplements.</p>
+                    <p>Price: $25</p>
+                    <button class="add-to-cart" data-name="Supplements" data-price="25">Add to Cart</button>
+                </div>
+                <!-- Product 5 -->
+                <div class="product">
+                    <img src="headphones.webp" alt="Headphones">
+                    <h4>Headphones</h4>
+                    <p>Enjoy your workout with our noise-cancelling headphones.</p>
+                    <p>Price: $50</p>
+                    <button class="add-to-cart" data-name="Headphones" data-price="50">Add to Cart</button>
+                </div>
+                <!-- Product 6 -->
+                <div class="product">
+                    <img src="fitness_tracker.jpg" alt="Fitness Tracker">
+                    <h4>Fitness Tracker</h4>
+                    <p>Track your progress with our state-of-the-art fitness trackers.</p>
+                    <p>Price: $80</p>
+                    <button class="add-to-cart" data-name="Fitness Tracker" data-price="80">Add to Cart</button>
+                </div>
+            </div>
+            <button id="checkoutButton">Checkout</button>
+        </main>
+    </section>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+    const cart = [];
+
+    // Function to add item to cart
+    function addToCart(name, price) {
+        const item = { name, price };
+        cart.push(item);
+        alert(`${name} has been added to your cart.`);
+    }
+
+    // Add event listeners to "Add to Cart" buttons
+    const addToCartButtons = document.querySelectorAll(".add-to-cart");
+    addToCartButtons.forEach(button => {
+        button.addEventListener("click", () => {
+            const name = button.getAttribute("data-name");
+            const price = parseFloat(button.getAttribute("data-price"));
+            addToCart(name, price);
+        });
+    });
+
+    // Handle checkout button click
+    const checkoutButton = document.getElementById("checkoutButton");
+    checkoutButton.addEventListener("click", () => {
+        if (cart.length === 0) {
+            alert("Your cart is empty.");
+            return;
+        }
+
+        // Store cart data in session storage
+        sessionStorage.setItem("cart", JSON.stringify(cart));
+
+        // Redirect to checkout page
+        window.location.href = "checkout.html";
+    });
+});
+    </script>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Membership</h3>
+                <ul>
+                    <li><a href="membership.html">Join Now</a></li>
+                    <li><a href="membership.html">Membership Benefits</a></li>
+                    <li><a href="membership.html">Membership Plans</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Store</h3>
+                <ul>
+                    <li><a href="store.html">Shop Now</a></li>
+                    <li><a href="store.html">Products</a></li>
+                    <li><a href="store.html">Special Offers</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <p>123 Gym Street, Fitnessville</p>
+                <p>Email: info@ironwarriorgym.com</p>
+                <p>Phone: +1 (123) 456-7890</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Iron Warrior Gym. All Rights Reserved.</p>
+        </div>
+    </footer>
+    <script src="store.js"></script>
+</body>
+</html>

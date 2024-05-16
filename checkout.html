@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Iron Warrior Gym</title>
+    <link rel="stylesheet" href="checkout.css">
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap" async defer></script>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Iron Warrior Gym</h1>
+        <nav>
+            <ul>
+                <li><a href="about_us.html">About Us</a></li>
+                <li><a href="membership.html">Membership</a></li>
+                <li><a href="store.html">Store</a></li>
+            </ul>
+        </nav>
+    </header>
+    <section class="checkout">
+        <main>
+            <h2>Checkout</h2>
+            <div id="cartItems"></div>
+            <div id="totalAmount"></div>
+        </main>
+        <div id="map" style="height: 400px; width: 100%; margin-top: 20px;">
+        </div>
+    </section>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+    // Get cart data from session storage
+    const cart = JSON.parse(sessionStorage.getItem("cart")) || [];
+
+    // Function to display cart items
+    function displayCartItems() {
+        const cartItemsContainer = document.getElementById("cartItems");
+        const totalAmountContainer = document.getElementById("totalAmount");
+
+        if (cart.length === 0) {
+            cartItemsContainer.innerHTML = "<p>Your cart is empty.</p>";
+            return;
+        }
+
+        let totalAmount = 0;
+        cartItemsContainer.innerHTML = "<ul>";
+        cart.forEach(item => {
+            cartItemsContainer.innerHTML += `<li>${item.name} - $${item.price}</li>`;
+            totalAmount += item.price;
+        });
+        cartItemsContainer.innerHTML += "</ul>";
+
+        totalAmountContainer.innerHTML = `<p>Total Amount: $${totalAmount}</p>`;
+    }
+
+    // Display cart items on page load
+    displayCartItems();
+});
+"use strict";
+
+// Initialize and add the map
+function initMap() {
+    // The location of Central Park
+    const position = { lat: 40.785091, lng: -73.968285 };
+    // The map, centered at Central Park
+    const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 15,
+        center: position,
+    });
+
+    // The marker, positioned at Central Park
+    const marker = new google.maps.Marker({
+        position: position,
+        map: map,
+        title: "Central Park",
+    });
+}
+</script>
+    </script>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Membership</h3>
+                <ul>
+                    <li><a href="membership.html">Join Now</a></li>
+                    <li><a href="membership.html">Membership Benefits</a></li>
+                    <li><a href="membership.html">Membership Plans</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Store</h3>
+                <ul>
+                    <li><a href="store.html">Shop Now</a></li>
+                    <li><a href="store.html">Products</a></li>
+                    <li><a href="store.html">Special Offers</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <p>123 Gym Street, Fitnessville</p>
+                <p>Email: info@ironwarriorgym.com</p>
+                <p>Phone: +1 (123) 456-7890</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Iron Warrior Gym. All Rights Reserved.</p>
+        </div>
+    </footer>
+    <script src="checkout.js"></script>
+</body>
+</html>

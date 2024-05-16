@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Iron Warrior Gym</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="nav-container">
+            <h1>Welcome to Iron Warrior Gym</h1>
+            <nav>
+                <ul>
+                    <li><a href="about_us.html">About Us</a></li>
+                    <li><a href="membership.html">Membership</a></li>
+                    <li><a href="store.html">Store</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="parallax parallax1" data-speed="0.5">
+            <div class="content">
+                <h2>About Us</h2>
+            </div>
+        </section>
+        <section class="content-section">
+            <div class="container">
+                <p>Welcome to Iron Warrior Gym! We are a premier fitness facility located in the heart of the city, dedicated to helping individuals of all fitness levels achieve their health and wellness goals. At Iron Warrior Gym, we believe that fitness is not just about physical strength, but also about mental resilience and emotional well-being. Our experienced trainers and staff are committed to providing a supportive and motivating environment where members can thrive and reach their full potential. With state-of-the-art equipment and a wide range of fitness classes and programs, Iron Warrior Gym offers something for everyone. Whether you're looking to lose weight, build muscle, improve flexibility, or simply maintain a healthy lifestyle, we have the resources and expertise to help you succeed. But Iron Warrior Gym is more than just a place to work out. It's a community of like-minded individuals who share a passion for fitness and a commitment to living their best lives. From group workouts to social events, we offer numerous opportunities for members to connect, inspire, and support each other on their fitness journey. Join us at Iron Warrior Gym and unleash your inner warrior today!</p>
+
+                <!-- Slideshow container -->
+                <div class="slideshow-container">
+                    <div class="mySlides fade">
+                        <img src="image1.jpg" style="width:100%" alt="Image 1">
+                    </div>
+                    <div class="mySlides fade">
+                        <img src="image2.jpg" style="width:100%" alt="Image 2">
+                    </div>
+                    <div class="mySlides fade">
+                        <img src="image3.webp" style="width:100%" alt="Image 3">
+                    </div>
+                    <!-- Next and previous buttons -->
+                    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+                    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+                </div>
+                <br>
+                <!-- The dots/circles -->
+                <div style="text-align:center">
+                    <span class="dot" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script>
+        let slideIndex = 0;
+showSlides();
+
+function showSlides() {
+    let i;
+    let slides = document.getElementsByClassName("mySlides");
+    let dots = document.getElementsByClassName("dot");
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) {slideIndex = 1}
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block";
+    dots[slideIndex-1].className += " active";
+    setTimeout(showSlides, 2000); // Change image every 2 seconds
+}
+
+function plusSlides(n) {
+    showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+    showSlides(slideIndex = n);
+}
+    </script>
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>Membership</h3>
+                <ul>
+                    <li><a href="membership.html">Join Now</a></li>
+                    <li><a href="membership.html">Membership Benefits</a></li>
+                    <li><a href="membership.html">Membership Plans</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Store</h3>
+                <ul>
+                    <li><a href="store.html">Shop Now</a></li>
+                    <li><a href="store.html">Products</a></li>
+                    <li><a href="store.html">Special Offers</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Contact Us</h3>
+                <p>123 Gym Street, Fitnessville</p>
+                <p>Email: info@ironwarriorgym.com</p>
+                <p>Phone: +1 (123) 456-7890</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Iron Warrior Gym. All Rights Reserved.</p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
+
